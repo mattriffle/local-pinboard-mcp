@@ -1,0 +1,37 @@
+{
+  "manifest_version": "0.3",
+  "name": "local-pinboard-mcp",
+  "version": "1.0.0",
+  "display_name": "Local Pinboard MCP",
+  "description": "A locally-hosted MCP server that connects your AI assistant to Pinboard via the v1 API.",
+  "author": {
+    "name": "Matt Riffle"
+  },
+  "server": {
+    "type": "node",
+    "entry_point": "dist/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": [
+        "${__dirname}/dist/index.js"
+      ],
+      "env": {
+        "PINBOARD_API_TOKEN": "${user_config.pinboard_api_token}"
+      }
+    }
+  },
+  "user_config": {
+    "pinboard_api_token": {
+      "type": "string",
+      "title": "Pinboard API Token",
+      "description": "Your Pinboard API token in the format username:HEXTOKEN. Find it at Settings → Password on pinboard.in.",
+      "sensitive": true,
+      "required": true
+    }
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mattriffle/local-pinboard-mcp"
+  }
+}
